@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+form {
+    background-color: yellow;
+    text-align: center;
+    margin-top: 5%;
+    padding: 2rem;
+}
+label {
+    color: red;
+    padding: 0.5rem;
+}

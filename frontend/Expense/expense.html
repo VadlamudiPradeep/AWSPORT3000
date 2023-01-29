@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense App</title>
+    <link rel="stylesheet" href="./expense.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h2>Expense App</h2>
+      </nav>
+    </header>
+
+    <main style="border: 5px red solid; background-color: orange;">
+      <form class="form" id="formId" action="#" onsubmit="saveToDB(event)">
+        <div class="form-control">
+          <label>Choose Expenses Amount</label>
+          <input type="text" id="amount" placeholder="Expenses Amount" /><br><br>
+          <label>Choose Description</label>
+          <input type="text" id="description" placeholder="Enter Description" /><br><br>
+          <label>Choose Category</label>
+          <select id="category">
+            <option value="Fuel">Fuel</option>
+            <option value="Food">Food</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Movie">Movie</option>
+            <option value="Rent">Rent</option>
+          </select><br><br>
+        </div>
+        <button type="submit">Add Expense</button>
+      </form><br>
+      <hr width="100%" size="5px" style="background-color: black" />
+      <ul style="margin-top: 20px; margin-left: 50px; margin-bottom: 20px;" id="expenseTracker"></ul>
+<div id="message"></div>
+
+
+
+     <button id="rzp-button1">Buy Premium</button>
+     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+     <button onclick="download()" id="downloadexpense">Download File</button>
+<!-- Pagination -->
+      <ul id="list" class="list"></ul>      
+      
+        <ul id="leaderboard" style="width:100% ; size:5px ; background-color: orange;" ></ul>
+  <!--Pagination container-->
+      <div class="pages-container"></div>
+      <div class="rows">
+        <p>Records per page:</p>
+        <select name="records" id="rows">
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>            
+
+    
+    </main>
+
+    <!-- axios - for network call --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./expense.js"></script>
+  </body>
+</html>
