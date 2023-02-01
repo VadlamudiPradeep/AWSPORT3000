@@ -1,15 +1,22 @@
 const path = require('path');
 const fs = require('fs') ;
 
+
 const express = require('express');
 
 const app = express();
-const dotenv = require('dotenv');
-
-// get config vars
-dotenv.config();
 
 var cors = require('cors')
+
+const helmet=require('helmet')
+app.use(helmet())
+
+const dotenv = require('dotenv');
+
+
+dotenv.config();
+
+
 const sequelize = require('./util/database');
 const User = require('./models/users');
 const Expense = require('./models/expenses');
@@ -21,8 +28,7 @@ const accessLogStream
 = fs.createWriteStream(path.join(__dirname, 'access.log'),
 {flags : 'a'});
 // Impoet helmet
-const helmet=require('helmet')
-app.use(helmet())
+
 
 app.use(morgan('combined' , {stream : accessLogStream}))
 
@@ -49,11 +55,12 @@ app.use('/purchase', purchaseRoutes);
 app.use('/premium' , premiumFeaturesRoutes)
 app.use('/password' , ForgetPasswordRouter);
 
-app.use((req ,res)=>{
-    console.log('url' , req.originalUrl)
-    res.sendFile(path.join(__dirname,`frontend/${req.url}`));
-});
+  
 
+app.use((req  ,res)=>{
+    console.log('URL' , req.url)
+    res.sendFile(path.join(__dirname , `frontend/${req.url}`))
+})
 
 User.hasMany(Expense);
 Expense.belongsTo(User);
